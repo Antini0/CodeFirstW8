@@ -26,7 +26,9 @@ app.UseHttpsRedirection();
 app.MapControllers();
 
 app.Run();
+//dotnet new tool-manifest
 
+//dotnet tool install dotnet-ef --version 8.0.0
 //dotnet ef migrations add Init
 
 //dotnet ef database update
