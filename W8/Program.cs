@@ -38,3 +38,5 @@ app.Run();
 
 //2. Studies - student jeden do wiele
 // jeden student jest przypisany do jednych studiów a studia do wielu studentów
+
+//3. generowanie dziedziczenia Employe

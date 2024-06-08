@@ -21,5 +21,8 @@ public partial class W7Context : DbContext
     public DbSet<StudentGroup> StudentGroups { get; set; }
     
     public DbSet<Studies> Studies { get; set; }
+    public DbSet<Employe> Employes { get; set; }
+    public DbSet<Teacher> Teachers { get; set; }
+    public DbSet<DeansOfficeEmp> DeansOfficeEmps { get; set; }
    
 }
