@@ -31,3 +31,10 @@ app.Run();
 
 //dotnet ef database update
 
+
+//zawsze dodawaj w kontekscie
+//1. Students group - student wiele do wiele
+//jesli w tabelce jest cos oprócz kluczy obcych trzeba ręcznie zrobić model
+
+//2. Studies - student jeden do wiele
+// jeden student jest przypisany do jednych studiów a studia do wielu studentów

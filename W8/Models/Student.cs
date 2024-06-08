@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace W8.Models;
 
@@ -18,4 +19,12 @@ public class Student
     [MaxLength(100)]
     [Required]
     public string IndexNumber { get; set; }
+    
+    public ICollection<StudentGroup> StudentGroups { get; set; }
+    
+    //zeby miec dostep do klucza obcego
+    public int IdStudies { get; set; }
+
+    [ForeignKey(nameof(IdStudies))]
+    public Studies Studies { get; set; }
 }

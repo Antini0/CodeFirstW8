@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using W8.Context;
 
@@ -10,9 +11,11 @@ using W8.Context;
 namespace W8.Migrations
 {
     [DbContext(typeof(W7Context))]
-    partial class W7ContextModelSnapshot : ModelSnapshot
+    [Migration("20240608102905_AddedStudentGroupTable")]
+    partial class AddedStudentGroupTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,9 +47,6 @@ namespace W8.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdStudent"));
 
-                    b.Property<int>("IdStudies")
-                        .HasColumnType("int");
-
                     b.Property<string>("IndexNumber")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -63,8 +63,6 @@ namespace W8.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("IdStudent");
-
-                    b.HasIndex("IdStudies");
 
                     b.ToTable("Students");
                 });
@@ -87,24 +85,6 @@ namespace W8.Migrations
                     b.ToTable("StudentGroups");
                 });
 
-            modelBuilder.Entity("W8.Models.Studies", b =>
-                {
-                    b.Property<int>("IdStudies")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdStudies"));
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("IdStudies");
-
-                    b.ToTable("Studies");
-                });
-
             modelBuilder.Entity("StudentStudentGroup", b =>
                 {
                     b.HasOne("W8.Models.StudentGroup", null)
@@ -118,22 +98,6 @@ namespace W8.Migrations
                         .HasForeignKey("StudentsIdStudent")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("W8.Models.Student", b =>
-                {
-                    b.HasOne("W8.Models.Studies", "Studies")
-                        .WithMany("Students")
-                        .HasForeignKey("IdStudies")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Studies");
-                });
-
-            modelBuilder.Entity("W8.Models.Studies", b =>
-                {
-                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }
